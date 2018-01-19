@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  todo:
+    image: todo
+    build:
+      context: .
+      dockerfile: Todo/Dockerfile
+
+  sqlserver:
+    image: microsoft/mssql-server-linux:2017-latest
+    ports:
+      - 1401:1433
+    environment:
+      SA_PASSWORD: "Passw0rd"
+      ACCEPT_EULA: Y
