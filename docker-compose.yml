@@ -7,7 +7,9 @@ services:
       context: .
       dockerfile: Todo/Dockerfile
     ports:
-      - 81:80
+      - 10000:80
+    depends_on:
+      - sqlserver
 
   sqlserver:
     image: microsoft/mssql-server-linux:2017-latest

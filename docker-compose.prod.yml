@@ -4,3 +4,18 @@ services:
   todo:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
+    expose:
+      - 10000
+    build:
+      args:
+        - http_proxy
+        - https_proxy
+        
+  proxy:
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    ports:
+      - 8080:80
+    links:
+      - todo
