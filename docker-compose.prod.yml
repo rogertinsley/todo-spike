@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  todo:
+  web:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
     expose:
@@ -18,4 +18,4 @@ services:
     ports:
       - 8080:80
     links:
-      - todo
+      - web
