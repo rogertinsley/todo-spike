@@ -2,6 +2,8 @@ version: '3'
 
 services:
   web:
+    container_name: todo_web_production
+    restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
     expose:
@@ -10,8 +12,14 @@ services:
       args:
         - http_proxy
         - https_proxy
-        
+  
+  database:
+    container_name: todo_database_production
+    restart: always
+
   proxy:
+    container_name: todo_proxy_production
+    restart: always
     build:
       context: nginx
       dockerfile: Dockerfile
