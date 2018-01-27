@@ -2,5 +2,9 @@ version: '3'
 
 services:
   todo:
+    build:
+      args:
+        - http_proxy
+        - https_proxy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
