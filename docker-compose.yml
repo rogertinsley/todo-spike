@@ -9,9 +9,9 @@ services:
     ports:
       - 10000:80
     depends_on:
-      - sqlserver
+      - database
 
-  sqlserver:
+  database:
     image: microsoft/mssql-server-linux:2017-latest
     ports:
       - 1401:1433
