@@ -1,7 +1,9 @@
 # todo-spike
 Exploratory project for ASP.NET Core, Docker and SQL Server
 
-`docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build`
+`docker-compose up -- build`
+
+`docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
 
 Production compose has nginx has a loadbalancer. What 3 web apps? No borr...
 
