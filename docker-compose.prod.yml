@@ -11,3 +11,5 @@ services:
 
   proxy:
     restart: always
+    ports:
+      - 80:80
