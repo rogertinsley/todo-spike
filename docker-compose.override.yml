@@ -8,3 +8,5 @@ services:
         - https_proxy
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 10000:80
