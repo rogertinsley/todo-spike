@@ -5,7 +5,9 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-  
+    volumes:
+      - keys:/var/keys
+
   database:
     restart: always
 
@@ -16,7 +18,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 80:80
-    links:
-      - web
     depends_on:
-      - database
+      - web
+
+volumes:
+  keys:
