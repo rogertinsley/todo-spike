@@ -24,7 +24,7 @@ namespace Todo
                 try
                 {
                     var context = services.GetRequiredService<TodoContext>();
-                    DbInitialiser.Initialize(context);
+                    Extensions.UntilSuccessful(() => DbInitialiser.Initialize(context), 10);
                 }
                 catch (Exception ex)
                 {

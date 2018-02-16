@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: Todo/Dockerfile
+      args:
+        - http_proxy
+        - https_proxy
     depends_on:
       - database
 
@@ -16,12 +19,3 @@ services:
     environment:
       SA_PASSWORD: "Passw0rd"
       ACCEPT_EULA: Y
-
-  proxy:
-    build:
-      context: nginx
-      dockerfile: Dockerfile
-    ports:
-      - 8000:80
-    links:
-      - web
