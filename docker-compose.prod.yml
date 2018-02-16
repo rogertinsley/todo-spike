@@ -11,5 +11,12 @@ services:
 
   proxy:
     restart: always
+    build:
+      context: nginx
+      dockerfile: Dockerfile
     ports:
       - 80:80
+    links:
+      - web
+    depends_on:
+      - database
