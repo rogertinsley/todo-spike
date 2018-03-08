@@ -5,7 +5,7 @@ Exploratory project for ASP.NET Core, Docker and SQL Server
 
 `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up`
 
-Production compose has nginx has a loadbalancer. What 3 web apps? No borr...
+Production compose has nginx has a loadbalancer. Want 5 web apps? No bother...
 
 `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --scale web=5 --build`
 
