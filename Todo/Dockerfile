@@ -1,18 +1,17 @@
-FROM microsoft/aspnetcore:2.0 AS base
+FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY *.sln ./
 COPY Todo/Todo.csproj Todo/
-RUN dotnet restore
+RUN dotnet restore Todo/Todo.csproj
 COPY . .
 WORKDIR /src/Todo
-RUN dotnet build -c Release -o /app
+RUN dotnet build Todo.csproj -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish -c Release -o /app
+RUN dotnet publish Todo.csproj -c Release -o /app
 
 FROM base AS final
 WORKDIR /app
