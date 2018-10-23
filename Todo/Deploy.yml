@@ -1,0 +1,39 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-deployment
+  labels:
+    app: todo
+spec:
+  replicas: 3
+  template:
+    metadata:
+      name: todo
+      labels:
+        app: todo
+    spec:
+      containers:
+      - name: todo
+        image: rdtregistry.azurecr.io/todo:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: acr-auth
+      restartPolicy: Always
+  selector:
+    matchLabels:
+      app: todo
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-service
+spec:
+  selector:
+    app: todo
+  ports:
+    - port: 80
+  type: LoadBalancer
