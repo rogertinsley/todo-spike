@@ -19,6 +19,8 @@ namespace Todo.Controllers
         // GET: Todo
         public async Task<IActionResult> Index()
         {
+            var sql = "SELECT * FROM SOMETABLE";
+            var result = _context.Database.ExecuteSqlCommand(sql);
             return View(await _context.Items.ToListAsync());
         }
 
